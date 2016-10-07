@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   root :to => redirect('/users/sign_in')
+
+  resources :characters, only: [:show,:new, :edit, :create]
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007092552) do
+ActiveRecord::Schema.define(version: 20161007125739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 20161007092552) do
     t.boolean  "alive",      default: true
     t.string   "gender"
     t.integer  "age",        default: 16
-    t.integer  "offense"
-    t.integer  "defense"
-    t.integer  "stealth"
     t.integer  "rank",       default: 1
     t.string   "image"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.boolean  "online"
+    t.integer  "offense",    default: 100
+    t.integer  "defense",    default: 100
+    t.integer  "stealth",    default: 100
     t.index ["user_id"], name: "index_characters_on_user_id", using: :btree
   end
 
