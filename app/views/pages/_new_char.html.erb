@@ -1,18 +1,43 @@
-<%= form_for(@char) do |f| %>
 
-<div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
-</div>
+  <%= form_for @char, html: {class: "form-horizontal"} do |f| %>
+  <% if @char.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@char.errors.count, "error") %> prohibited
+          this char from being saved:</h2>
+      <ul>
+      <% @char.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>f
+  <% end %>
 
-<div class="field">
-  <%= f.label :gender %><br />
-  <%= f.select :gender, ['male', 'female'] %>
-</div>
+    <div class="form-group">
+      <%= f.label :name, class: 'col-sm-1 control-label'%>
+      <div class="col-sm-5">
+        <%= f.text_field :name, class: 'form-control' %>
+        <span id="helpBlock1" class="help-block">Allowed: one space, letters</span>
+      </div>
+    </div>
 
+    <div class="form-group">
+        <%= f.label :image, class: 'col-sm-1 control-label'%>
+        <div class="col-sm-5">
+          <%= f.file_field :image, class: 'form-control' %>
+        </div>
+    </div>
 
+    <div class="form-group">
+      <%= f.label :gender, class: 'col-sm-1 control-label' %>
+      <div class="col-sm-2">
+        <%= f.select(:gender, options_for_select([['Male', 1], ['Female', 2]]), {}, {class: "form-control"}) %>
+      </div>
+    </div>
 
-<div class="actions">
-  <%= f.submit %>
-</div>
-<% end %>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-6">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+      </div>
+    </div>
+
+    <% end %>

@@ -4,6 +4,7 @@ class CharactersController < ApplicationController
   end
 
   def new
+    @character = Character.new
   end
 
   def create
@@ -29,7 +30,7 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name, :gender)
+    params.require(:character).permit(:name, :gender,:image)
   end
 
 end
