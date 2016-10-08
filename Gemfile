@@ -48,4 +48,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+
+#devise
 gem 'devise'
+gem 'warden'
+
+#images
+gem 'carrierwave'
+gem 'cloudinary'
+
+gem 'rails_12factor', group: :production
