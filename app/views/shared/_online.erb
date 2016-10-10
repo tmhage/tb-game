@@ -1,0 +1,14 @@
+
+  <br><h6 style>Players online</h6>
+<div class="jumbotron" style="text-align:center;padding:0px">
+
+  <p><small>
+    <% if Character.online.any? %>
+      <% Character.online.sort_by{ |c| c.rank }.reverse.each do |character| %>
+        | <%= link_to character.name, character %> |
+      <% end %>
+    <% else %>
+      There are no users online.
+    <% end %>
+  </small></p>
+</div>

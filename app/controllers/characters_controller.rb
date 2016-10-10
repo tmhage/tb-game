@@ -18,7 +18,7 @@ class CharactersController < ApplicationController
     respond_to do |format|
       if @character.save
         format.html  { redirect_to(@character,
-                      :notice => 'Character was successfully created.') }
+                      :notice => 'Character was successfully created. Good luck!') }
         format.json  { render :json => @character,
                       :status => :created, :location => @character }
       else
@@ -48,7 +48,7 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name, :gender,:image)
+    params.require(:character).permit(:name, :gender,:image,:online)
   end
 
 end
