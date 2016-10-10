@@ -8,6 +8,10 @@ class CharactersController < ApplicationController
     @character = Character.new
   end
 
+  def edit
+    @character = current_user.active_character
+  end
+
   def create
     @character = current_user.characters.new(character_params)
 
@@ -26,20 +30,20 @@ class CharactersController < ApplicationController
   end
 
   def update
-  @character = current_user.active_character
+    @character = current_user.active_character
 
-  respond_to do |format|
-    if @character.update_attributes(params[:post])
-      format.html  { redirect_to(@character,
-                    :notice => 'Character was successfully updated.') }
-      format.json  { head :no_content }
-    else
-      format.html  { render :action => "edit" }
-      format.json  { render :json => @character.errors,
-                    :status => :unprocessable_entity }
+    respond_to do |format|
+      if @character.update_attributes(params[:post])
+        format.html  { redirect_to(@character,
+                      :notice => 'Character was successfully updated.') }
+        format.json  { head :no_content }
+      else
+        format.html  { render :action => "edit" }
+        format.json  { render :json => @character.errors,
+                      :status => :unprocessable_entity }
+      end
     end
   end
-end
 
   private
 

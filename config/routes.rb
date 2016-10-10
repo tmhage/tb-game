@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   root :to => redirect('/users/sign_in')
 
+  get '/characters/edit', to: 'characters#edit', :as => :edit_char
+
   resources :characters, only:[:show,:new,:create,:update]
 end
