@@ -1,10 +1,15 @@
 class CharactersController < ApplicationController
 
   def show
+    @character = Character.all.find(params[:id])
   end
 
   def new
     @character = Character.new
+  end
+
+  def edit
+    @character = current_user.active_character
   end
 
   def create
@@ -25,6 +30,19 @@ class CharactersController < ApplicationController
   end
 
   def update
+    @character = current_user.active_character
+
+    respond_to do |format|
+      if @character.update_attributes(params[:post])
+        format.html  { redirect_to(@character,
+                      :notice => 'Character was successfully updated.') }
+        format.json  { head :no_content }
+      else
+        format.html  { render :action => "edit" }
+        format.json  { render :json => @character.errors,
+                      :status => :unprocessable_entity }
+      end
+    end
   end
 
   private
