@@ -1,1 +1,34 @@
-<p>Succes</p>
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-sm-4">
+                    <%= image_tag(@character.image.thumbnail.url) %>
+                    <!-- <div class="btn-group">
+                        <button type="button" class="btn btn-primary">
+                            Action</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span><span class="sr-only">Action</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Message</a></li>
+                            <li><a href="#">Mug</a></li>
+                            <li><a href="#">Kill</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+                <div class="col-sm-6">
+                    <h2> <%= @character.name %></h2>
+                    <h5><%= @character.rankname %></h5>
+                    <p><small>
+                      Posts: 0<br>
+                      Messages: 0<br>
+                      Last seen: <%=@character.user.last_sign_in_at.strftime("%d-%m-%Y, %H:%M") %><br>
+                      Registered: <%=@character.created_at.strftime("%d-%m-%Y, %H:%M") %>
+                    </small></p><br>
+                    <!-- Split button -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
