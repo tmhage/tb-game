@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root :to => redirect('/users/sign_in')
 
   get '/characters/edit', to: 'characters#edit', :as => :edit_char
+  get '/petty_crime', to: 'pages#pretty_crime', :as =>:petty_crime
 
   resources :characters, only:[:show,:new,:create,:update]
 end

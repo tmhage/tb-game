@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_filter :authenticate_user!
 
   def show
     @character = Character.all.find(params[:id])
@@ -33,7 +34,7 @@ class CharactersController < ApplicationController
     @character = current_user.active_character
 
     respond_to do |format|
-      if @character.update_attributes(params[:post])
+      if @character.update_attributes(character_params)
         format.html  { redirect_to(@character,
                       :notice => 'Character was successfully updated.') }
         format.json  { head :no_content }
