@@ -1,0 +1,26 @@
+%div
+  %h2 Edit Character
+  %br
+=form_for @character, html: {class: "row form-horizontal"}, :action => 'update' do |f|
+  -if @character.errors.any?
+    .errorExplanation
+      -@character.errors.full_messages.each do |msg|
+        .row
+          .alert.alert-danger.col-sm-6{role: "alert"}
+            %strong= msg
+  %fieldset.disabled
+    .form-group
+      = f.label :name, class: 'col-sm-1 col-sm-offset-3 control-label'
+      .col-sm-5
+        = f.text_field :name, class: 'form-control disabled'
+    .form-group
+      = f.label :image, class: 'col-sm-1 col-sm-offset-3 control-label'
+      .col-sm-5
+        = f.file_field :image, class: 'form-control'
+    .form-group
+      = f.label :gender, class: 'col-sm-1 col-sm-offset-3 control-label'
+      .col-sm-2
+        = f.select(:gender, options_for_select([['Male', 1], ['Female', 2]]), {}, {class: "form-control"})
+    .form-group
+      .col-sm-offset-1.col-sm-offset-3.col-sm-6
+        = f.submit "Submit", class: "btn btn-default"

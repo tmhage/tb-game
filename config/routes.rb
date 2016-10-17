@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   authenticated :user do
     root :to => 'pages#home', :as => :authenticated_root
   end
-  !authenticated :user do
-    redirect('/users/sign_in')
-  end
 
   root :to => redirect('/users/sign_in')
 

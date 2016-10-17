@@ -1,0 +1,37 @@
+= form_for @char, html: {class: "form-horizontal"} do |f|
+  -if @char.errors.any?
+    #errorExplanation
+      %h2
+        = pluralize(@char.errors.count, "error")
+          prohibited this char from being saved
+      %ul
+          -@char.errors.full_messages.each do |msg|
+          %li
+            = msg
+
+
+  .form-group
+    = f.label :name, class: 'col-sm-1 control-label'
+    .col-sm-5
+      = f.text_field :name, class: 'form-control'
+      .help-block{id: 'helpBlock1'} Allowed: one space, letters
+
+  .form-group
+    = f.label :name, class: 'col-sm-1 control-label'
+    .col-sm-5
+    = f.file_field :image, class: 'form-control'
+
+<div class="form-group">
+    <%= f.label :gender, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-2">
+        <%= f.select(:gender, options_for_select([['Male', 1], ['Female', 2]]), {}, {class: "form-control"}) %>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-1 col-sm-6">
+        <%= f.submit "Submit", class: "btn btn-default" %>
+    </div>
+</div>
+
+<% end %>

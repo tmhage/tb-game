@@ -10,7 +10,7 @@ class Character < ApplicationRecord
   scope :online, -> { where(:online => true) }
   belongs_to :user
   mount_uploader :image, ImageUploader
-  validate :have_active_character?
+  before_validation :have_active_character?, :on => :create
   validates :name, length: {minimum: 3, maximum: 16}
   validates :gender, inclusion: { in: GENDERS }
   validates_presence_of :name,:image,:gender,:user
